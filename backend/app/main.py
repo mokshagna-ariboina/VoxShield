@@ -8,7 +8,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import settings
-from app.routers import analyze, liveness, calls, speakers, trust, transactions
+from app.routers import analyze, liveness, calls, speakers, trust, transactions, stream
 
 logger = logging.getLogger(__name__)
 
@@ -101,6 +101,7 @@ app.include_router(calls.router, prefix="/api")
 app.include_router(speakers.router, prefix="/api")
 app.include_router(trust.router, prefix="/api")
 app.include_router(transactions.router, prefix="/api")
+app.include_router(stream.router)
 
 
 @app.get("/health")
